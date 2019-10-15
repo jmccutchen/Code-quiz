@@ -1,0 +1,79 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* above lines are from this article https://css-tricks.com/box-sizing/- 
+Universal Box Sizing with Inheritance */
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(155, 155, 224);
+}
+
+.container {
+    width: 800px;
+    max-width: 80%;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 10px;
+    /* shadow is x offset, y offset, blur, spread- how far out  */
+    box-shadow: 0 0 10px 2px;
+    margin: 50px;
+}
+
+.answer-grid {
+    display: grid;
+    grid-row-gap: 10px;
+    margin: 20px 0;
+}
+
+.header-grid {
+    
+}
+
+.btn {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+
+}
+
+.btn:hover {
+    border-color: green;
+}
+
+.btn.wrong {
+    background-color: red;
+    color: white;
+}
+
+.btn.correct {
+    background-color: green;
+    color: black;
+}
+
+.big-btn {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
