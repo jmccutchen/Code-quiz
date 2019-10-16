@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box;
+    
 }
 
 *, *:before, *:after {
@@ -29,6 +30,10 @@ body {
     /* shadow is x offset, y offset, blur, spread- how far out  */
     box-shadow: 0 0 10px 2px;
     margin: 50px;
+}
+
+#question-container {
+    font-size: 20px;
 }
 
 .answer-grid {
