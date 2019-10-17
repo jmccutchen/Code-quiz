@@ -18,10 +18,10 @@ body {
     height: 100%;
     justify-content: center;
     align-items: center;
-    background-color: rgb(155, 155, 224);
+    background-color: rgb(89, 110, 228);
 }
 
-.container {
+.qstContainer {
     width: 800px;
     max-width: 80%;
     background-color: whitesmoke;
@@ -42,8 +42,28 @@ body {
     margin: 20px 0;
 }
 
+#highScores,
+#timer {
+    background-color: whitesmoke;
+    font-weight: bold;
+    font-size: 20px;
+}
+
 .header-grid {
+    width: 800px;
+    max-width: 80%;
+    background-color: rgb(217, 217, 221);
+    border-radius: 5px;
+    padding: 10px;
+    /* shadow is x offset, y offset, blur, spread- how far out  */
+    box-shadow: 0 0 10px 2px;
+    margin: 50px;
     
+}
+
+#yourScore {
+    color: rgb(4, 87, 4);
+    font-size: 20px;
 }
 
 .btn {
@@ -54,16 +74,20 @@ body {
 }
 
 .btn:hover {
-    border-color: green;
+    border-color: rgb(99, 238, 99);
+}
+
+#start-btn {
+    background-color: rgb(97, 230, 97);
 }
 
 .btn.wrong {
-    background-color: red;
+    background-color: rgb(250, 75, 75);
     color: white;
 }
 
 .btn.correct {
-    background-color: green;
+    background-color: rgb(118, 216, 118);
     color: black;
 }
 
@@ -81,4 +105,8 @@ body {
 
 .hide {
     display: none;
+}
+
+.timer {
+    margin-left: 50px;
 }
