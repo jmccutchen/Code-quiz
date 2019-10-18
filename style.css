@@ -19,6 +19,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: rgb(89, 110, 228);
+
 }
 
 .qstContainer {
@@ -101,6 +102,24 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 20px;
+   
+}
+
+#start-over-btn {
+    background-color: rgb(97, 230, 97);
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#clear-high-btn {
+    background-color: deepskyblue;
+    color: whitesmoke;
+}
+
+#submit-score {
+    background-color: rgba(0, 102, 255, 0.747);
+    color: whitesmoke;
 }
 
 .hide {
@@ -109,4 +128,16 @@ body {
 
 .timer {
     margin-left: 50px;
+}
+
+#correctMessage {
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(6, 223, 6);
+}
+
+#wrongMessage {
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(223, 6, 6);
 }

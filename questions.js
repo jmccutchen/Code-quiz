@@ -10,6 +10,10 @@ var endContainer = document.querySelector("#end-container");
 var endButton = document.querySelector("#end-button");
 var yourScore = document.querySelector("#yourScore");
 var startOver = document.querySelector("#start-over-btn");
+var submitButton = document.querySelector("#submit-score");
+var timerValue = document.querySelector("#timer");
+var wrongMessage = document.querySelector("#wrongMessage");
+var correctMessage = document.querySelector("#correctMessage");
 var shuffledQuestions;
 var currentQuestionIndex;
 
@@ -39,12 +43,15 @@ function showQuestion(question){
     button.classList.add("btn");
 // checks if answer is correct and adds data attribute if correct   
     if (answer.correct){
-        button.dataset.correct = answer.correct
+        button.dataset.correct = answer.correct  
+            
     };
     button.addEventListener("click", selectAnswer);
     answerButtonsElement.appendChild(button);
     });
 };
+
+
 
 function setNextQuestion(){
 // resets questions
@@ -79,15 +86,27 @@ function selectAnswer(e){
 
         endButton.classList.remove("hide");
     }
-};
 
+    if (e.target= correct){
+        correctMessage.classList.remove ("hide");
+    }  else {
+        wrongMessage.classList.remove ("hide");
+        function wrongAnswer(){
+            timerValue.textContent = "Timer: " + timerValue -10;
+        };
+       
+    }
+    
+};
+// hide end content and reveal beginning content 
 startOver.addEventListener("click", function(){
         endContainer.classList.add("hide");
         startOverButton.classList.add("hide");
         clearHighButton.classList.add("hide");
         startContainer.classList.remove("hide");
         startButton.classList.remove("hide");
-        timeLeft = 75;
+        submitButton.classList.add("hide");
+        timerValue.textContent = "Timer: 75";
 });
 
 endButton.addEventListener("click", function(){
@@ -95,18 +114,28 @@ endButton.addEventListener("click", function(){
         endContainer.classList.remove("hide");
         startOverButton.classList.remove("hide");
         clearHighButton.classList.remove("hide");
+        submitButton.classList.remove("hide");
         endButton.classList.add("hide");
         clearInterval(myInterval);
         var theScore = timeLeft + 1;
         yourScore.textContent= "Your score is: " + theScore;
-
+        wrongMessage.classList.add ("hide");
+        correctMessage.classList.add ("hide");
 
 });
+
+// localStorage.setItem("initials": "Score");
+
+// submitButton.addEventListener("click", function(){
+//     localStorage.add(: yourScore)
+// })
 
 // when next button clicked, it increments question index
 nextButton.addEventListener("click", () => {
     currentQuestionIndex++
     setNextQuestion()
+    wrongMessage.classList.add ("hide");
+    correctMessage.classList.add ("hide");
 
 });
 
@@ -116,15 +145,17 @@ function setStatusClass(element, correct) {
 
     if(correct) {
         element.classList.add("correct");
-
+        
     } else {
         element.classList.add("wrong");
+        
     }
 }
 
 function clearStatusClass(element) {
     element.classList.remove("correct");
     element.classList.remove("wrong");
+    ;
 }
 
 
