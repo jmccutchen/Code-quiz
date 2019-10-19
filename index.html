@@ -17,7 +17,7 @@
 
 <div class="container">
         <div class="header-grid row">
-            <div id="highScores" class="btn col-sm-4">View High Scores</div>
+            <button id="highScores" class="btn col-sm-4">View High Scores</button>
             <div class= "col-sm-4"></div>
             <div id="timer" class="btn col-sm-4">Timer: 75</div>
         </div>
@@ -25,8 +25,8 @@
 
     <div class="qstContainer container">
         <div id= "messageConfirm">
-            <div id= "correctMessage" class= "hide">Correct! Nice work!</div>
-            <div id= "wrongMessage" class= "hide">Wrong! Get it together!</div>
+            <div id= "correctMessage" class= "hide">Correct! Bomb.com!</div>
+            <div id= "wrongMessage" class= "hide">Wrong! Get yoself together!</div>
         </div>
         <div id="question-container" class="hide">
             <div id="question">Question</div>
@@ -46,7 +46,7 @@
             <h1>All Done!!</h1>
             <p id="yourScore"></p>
             <form>Enter initials to record score
-                <input type= "text">
+                <input id= "initials" type= "text">
             </form>
 
         </div>
@@ -57,9 +57,14 @@
             <button id="start-over-btn" class="start-over-btn big-btn btn hide">Start Over?</button>
             <button id="clear-high-btn" class="big-btn btn hide">Clear Scores</button>
             <button id="end-button" class= "btn big-btn hide">End Game</button>
+            
         </div>
-
     </div>
+        <div class= "header-grid hide" id= "scoreBox">
+            <h2>Saved Scores</h2>
+            <ul id= "scoreBoard"></ul>
+            <button id="close-btn" class="close-btn big-btn btn col-sm-4">Close</button>
+        </div>
 </div>
 
     <script src="questions.js"></script>

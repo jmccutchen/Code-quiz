@@ -13,7 +13,7 @@ var timeLeft = 75;
 function countDown() {
     
     myInterval = setInterval(function() {
-        document.querySelector("#timer").textContent = "Timer: " + timeLeft;
+        timerValue.textContent = "Timer: " + timeLeft;
     
         if (timeLeft <= 0) {
             clearInterval(myInterval);

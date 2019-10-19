@@ -1,5 +1,6 @@
 var startButton = document.querySelector("#start-btn");
 var nextButton = document.querySelector("#next-btn");
+var viewScores = document.querySelector("#highScores");
 var startOverButton = document.querySelector("#start-over-btn");
 var clearHighButton = document.querySelector("#clear-high-btn");
 var questionContainerElement = document.querySelector("#question-container");
@@ -14,6 +15,10 @@ var submitButton = document.querySelector("#submit-score");
 var timerValue = document.querySelector("#timer");
 var wrongMessage = document.querySelector("#wrongMessage");
 var correctMessage = document.querySelector("#correctMessage");
+var initials = document.querySelector("#initials");
+var scoreContainer = document.querySelector("#scoreBox");
+var scoreBoard = document.querySelector("#scoreBoard");
+var closeButton = document.querySelector("#close-btn");
 var shuffledQuestions;
 var currentQuestionIndex;
 
@@ -107,6 +112,7 @@ startOver.addEventListener("click", function(){
         startButton.classList.remove("hide");
         submitButton.classList.add("hide");
         timerValue.textContent = "Timer: 75";
+        scoreContainer.classList.add("hide")
 });
 
 endButton.addEventListener("click", function(){
@@ -124,11 +130,38 @@ endButton.addEventListener("click", function(){
 
 });
 
-// localStorage.setItem("initials": "Score");
 
-// submitButton.addEventListener("click", function(){
-//     localStorage.add(: yourScore)
-// })
+
+
+var scores = [];
+
+submitButton.addEventListener("click", function(){
+    // creates object for scores and pushes to array scores
+    var scoreObj = {
+        name: initials.value,
+        score: timeLeft +1
+    }
+    scores.push(scoreObj);
+    // empties initial box
+    initials.value= "";
+    var scoreJSON = JSON.stringify (scores);
+    localStorage.setItem("listScores", scoreJSON);
+    console.log(scores[0]);
+})
+
+
+clearHighButton.addEventListener("click", function(){
+    localStorage.clear();
+});
+
+viewScores.addEventListener("click", function(){
+    for (let i = 0; i < localStorage.length; i++) {
+        var storedScore = JSON.parse(localStorage.getItem("listScores"));
+        scoreBoard.innerHTML= storedScore; 
+        
+    }
+    scoreContainer.classList.remove("hide");
+})
 
 // when next button clicked, it increments question index
 nextButton.addEventListener("click", () => {
@@ -142,13 +175,10 @@ nextButton.addEventListener("click", () => {
 // function used above to set status
 function setStatusClass(element, correct) {
     clearStatusClass(element)
-
     if(correct) {
         element.classList.add("correct");
-        
     } else {
         element.classList.add("wrong");
-        
     }
 }
 
@@ -158,6 +188,9 @@ function clearStatusClass(element) {
     ;
 }
 
+closeButton.addEventListener("click", function (){
+    scoreContainer.classList.add("hide");
+})
 
 var questions = [
     {
