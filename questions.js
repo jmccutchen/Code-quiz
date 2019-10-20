@@ -84,6 +84,7 @@ function selectAnswer(e){
     Array.from(answerButtonsElement.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
+    
     // if there are more questions then show Next button
     if (shuffledQuestions.length > currentQuestionIndex +1) {
     nextButton.classList.remove("hide");
@@ -92,13 +93,19 @@ function selectAnswer(e){
         endButton.classList.remove("hide");
     }
 
+    // if answer clicked is correct, give correct message, if not then wrong answer
     if (e.target= correct){
         correctMessage.classList.remove ("hide");
+        var correctAudio = new Audio('070-who2.wav');
+        correctAudio.play();
     }  else {
         wrongMessage.classList.remove ("hide");
         function wrongAnswer(){
-            timerValue.textContent = "Timer: " + timerValue -10;
+            timeLeft -=15;
         };
+        wrongAnswer();
+        var wrongAudio = new Audio('haha.mp3');
+        wrongAudio.play();
        
     }
     
@@ -133,10 +140,11 @@ endButton.addEventListener("click", function(){
 
 
 
-var scores = [];
+var scores = []
 
 submitButton.addEventListener("click", function(){
     // creates object for scores and pushes to array scores
+    ;
     var scoreObj = {
         name: initials.value,
         score: timeLeft +1
@@ -144,9 +152,9 @@ submitButton.addEventListener("click", function(){
     scores.push(scoreObj);
     // empties initial box
     initials.value= "";
-    var scoreJSON = JSON.stringify (scores);
-    localStorage.setItem("listScores", scoreJSON);
-    console.log(scores[0]);
+    var scoreJSON = JSON.stringify(scores);
+    localStorage.setItem("scores", scoreJSON);
+    
 })
 
 
@@ -155,12 +163,24 @@ clearHighButton.addEventListener("click", function(){
 });
 
 viewScores.addEventListener("click", function(){
-    for (let i = 0; i < localStorage.length; i++) {
-        var storedScore = JSON.parse(localStorage.getItem("listScores"));
-        scoreBoard.innerHTML= storedScore; 
-        
-    }
+    // event.preventDefault();
     scoreContainer.classList.remove("hide");
+    var storedScore = JSON.parse(localStorage.getItem("scores"));
+    
+
+    // I can't get this fn thing to work, spent 3 hours on it, I give up
+
+    // create a new li for each storedScore
+    for (let i = 0; i < scores.length; i++) {
+        var newli= document.createElement("li");
+        var init = localStorage.scores(i);
+        var scoreNumber = localStorage.getItem(init);
+        newli.textContent = (init + "   " + scoreNumber);
+        newli.setAttribute("data-index", i);
+        scoreBoard.appendChild(newli);
+       
+    }
+    
 })
 
 // when next button clicked, it increments question index
@@ -188,6 +208,7 @@ function clearStatusClass(element) {
     ;
 }
 
+// closes the scoreboard
 closeButton.addEventListener("click", function (){
     scoreContainer.classList.add("hide");
 })
